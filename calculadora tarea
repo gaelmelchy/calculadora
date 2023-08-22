@@ -1,0 +1,118 @@
+#include <iostream>
+ #include <string.h>
+//Libreria de configuraciones especificas 
+#include <locale.h>
+#include<windows.h>
+#include <iomanip>
+#ifdef _WIN32
+#endif
+#include <cstdlib>
+#include <windows.h>
+
+
+using namespace std;
+  
+
+
+   void titulo(string title)
+   { 
+      int i;
+      int val;
+      
+      val = title.length();
+      val = val + 86 ;
+      
+      
+      for(i =0;  i <=val; i++)
+      {
+      	cout <<"*";
+      }
+    
+       cout << "\n\n";
+       
+       for(i=0; i <=val; i++)
+       {
+       	 cout <<" ";
+       	 if(i==5)
+       	 {
+       	 	cout << title;
+       	 }
+       	 cout << " ";
+       }
+       
+       cout << "\n";
+       
+       for(i=0; i<= val; i++)
+       {
+       	 cout << "*";
+       }
+       
+       cout <<"\n \n \n";
+       
+       
+       
+   }
+   
+using namespace std;
+
+// Función para convertir Fahrenheit a Celsius
+double fahrenheitToCelsius(double fahrenheit) {
+    return (fahrenheit - 32) * 5.0 / 9.0;
+}
+
+// Función para convertir Celsius a Fahrenheit
+double celsiusToFahrenheit(double celsius) {
+    return (celsius * 9.0 / 5.0) + 32;
+}
+
+int main() {
+   
+   
+   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		  SetConsoleTextAttribute(hConsole, 1);
+	   titulo("\t\t\t\t Calculadora de Temperaturas");
+   	 //LC_TYPE afecta los caracteres de la funcion
+    setlocale(LC_CTYPE,"Spanish");
+    
+    SetConsoleTextAttribute(hConsole, 1);
+     cout<<"\n id:170822";
+   SetConsoleTextAttribute(hConsole,5);  
+     cout<<"\n\n Gael Melchy Calderón";
+    
+    int opcion;
+    double temperatura;
+
+    do {
+       SetConsoleTextAttribute(hConsole,2);  
+	    cout << "\n\n Menú de Conversión de Temperatura:" << endl;
+        cout << "1. Fahrenheit a Celsius" << endl;
+        cout << "2. Celsius a Fahrenheit" << endl;
+        cout << "3. Salir" << endl;
+        cout << "Ingrese su elección: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "Ingrese la temperatura en Fahrenheit: ";
+                cin >> temperatura;
+                cout << "Temperatura equivalente en Celsius: ";
+                cout << fixed << setprecision(2) << fahrenheitToCelsius(temperatura) << "°C" << endl;
+                break;
+            case 2:
+                cout << "Ingrese la temperatura en Celsius: ";
+                cin >> temperatura;
+                cout << "Temperatura equivalente en Fahrenheit: ";
+               
+                cout << fixed << setprecision(2) << celsiusToFahrenheit(temperatura) << "°F" << endl;
+                
+                break;
+            case 3:
+                cout << "Saliendo del programa." << endl;
+                break;
+            default:
+                cout << "Opción inválida. Por favor, inténtelo de nuevo." << endl;
+        }
+    } while (opcion != 3);
+
+    return 0;
+}
